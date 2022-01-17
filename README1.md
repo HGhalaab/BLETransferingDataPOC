@@ -1,3 +1,9 @@
+# This Project is created by apple. 
+- I add some extra code in order to test the behaviour of working with the BLE while the app is in the background.
+- You can use LocalNotificationManager in order to push local notification for the user to test thaat the app works in the background.
+- The second part of the readme file is also made by apple.
+
+
 # Transferring Data Between Bluetooth Low Energy Devices
 
 Create a Bluetooth low energy central and peripheral device, and allow them to discover each other and exchange data.

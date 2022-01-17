@@ -21,7 +21,7 @@ class CentralViewController: UIViewController {
     var writeIterationsComplete = 0
     var connectionIterationsComplete = 0
     
-    let defaultIterations = 5     // change this value based on test usecase
+    let defaultIterations = 1     // change this value based on test usecase
     
     var data = Data()
 
@@ -30,7 +30,6 @@ class CentralViewController: UIViewController {
     override func viewDidLoad() {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: true])
         super.viewDidLoad()
-
     }
 	
     override func viewWillDisappear(_ animated: Bool) {
@@ -63,6 +62,40 @@ class CentralViewController: UIViewController {
             // We were not connected to our counterpart, so start scanning
             centralManager.scanForPeripherals(withServices: [TransferService.serviceUUID],
                                                options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
+        }
+        //retrievePeripheralWithOptions()
+    }
+    
+    /// Testing when adding options during the connection
+    private func retrievePeripheralWithOptions() {
+        
+        let connectedPeripherals: [CBPeripheral] = (centralManager.retrieveConnectedPeripherals(withServices: [TransferService.serviceUUID]))
+        
+        os_log("Found connected Peripherals with transfer service: %@", connectedPeripherals)
+        
+        if let connectedPeripheral = connectedPeripherals.last {
+            os_log("Connecting to peripheral %@", connectedPeripheral)
+            self.discoveredPeripheral = connectedPeripheral
+            
+            centralManager.connect(
+                connectedPeripheral,
+                options: [
+                    CBConnectPeripheralOptionNotifyOnConnectionKey: true,
+                    CBConnectPeripheralOptionRequiresANCS: true,
+                    CBConnectPeripheralOptionNotifyOnNotificationKey: true
+                ]
+            )
+        } else {
+            // We were not connected to our counterpart, so start scanning
+            centralManager.scanForPeripherals(
+                withServices: [TransferService.serviceUUID],
+                options: [
+                    CBCentralManagerScanOptionAllowDuplicatesKey: true,
+                    CBConnectPeripheralOptionNotifyOnConnectionKey: true,
+                    CBConnectPeripheralOptionRequiresANCS: true,
+                    CBConnectPeripheralOptionNotifyOnNotificationKey: true
+                ]
+            )
         }
     }
     
@@ -222,7 +255,12 @@ extension CentralViewController: CBCentralManagerDelegate {
      */
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         os_log("Peripheral Connected")
-        
+        DispatchQueue.main.async {
+            LocalNotificationManager.setNotification(
+                1, of: .seconds, repeats: false,
+                title: "Hello1", body: "Peripheral Connected",
+                userInfo: ["aps" : ["hello" : UUID.init().uuidString]])
+        }
         // Stop scanning
         centralManager.stopScan()
         os_log("Scanning stopped")
@@ -344,6 +382,10 @@ extension CentralViewController: CBPeripheralDelegate {
         } else {
             // Otherwise, just append the data to what we have previously received.
             data.append(characteristicData)
+//            LocalNotificationManager.setNotification(
+//                1, of: .seconds, repeats: false,
+//                title: "Received \(characteristicData.count) bytes", body: stringFromData,
+//                userInfo: ["aps" : ["hello" : UUID.init().uuidString]])
         }
     }
 

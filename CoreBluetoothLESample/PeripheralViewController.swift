@@ -295,5 +295,6 @@ extension PeripheralViewController: UITextViewDelegate {
         navigationItem.rightBarButtonItem = nil
     }
     
+    
 }
 
