@@ -15,7 +15,7 @@
 		012C307C226FD28C00BADEF9 /* PeripheralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012C307B226FD28C00BADEF9 /* PeripheralViewController.swift */; };
 		012C307E226FD59500BADEF9 /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012C307D226FD59500BADEF9 /* TransferService.swift */; };
 		F51D5841278D979E004D0731 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51D5840278D979E004D0731 /* LocalNotificationManager.swift */; };
-		F5397617279558A000EA0B2A /* README1.md in Resources */ = {isa = PBXBuildFile; fileRef = F5397616279558A000EA0B2A /* README1.md */; };
+		F59C87D9279561B70075B1A2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F59C87D8279561B70075B1A2 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,7 @@
 		940DB595832554E780C12D56 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		A9FCEFA72293634C008CC0CF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F51D5840278D979E004D0731 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
-		F5397616279558A000EA0B2A /* README1.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README1.md; sourceTree = "<group>"; };
+		F59C87D8279561B70075B1A2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +49,7 @@
 		012C305B226FD13B00BADEF9 = {
 			isa = PBXGroup;
 			children = (
-				F5397616279558A000EA0B2A /* README1.md */,
+				F59C87D8279561B70075B1A2 /* README.md */,
 				012C3066226FD13B00BADEF9 /* CoreBluetoothLESample */,
 				012C3065226FD13B00BADEF9 /* Products */,
 				A9FCEFA62293634C008CC0CF /* Frameworks */,
@@ -165,9 +165,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5397617279558A000EA0B2A /* README1.md in Resources */,
 				012C3072226FD13B00BADEF9 /* LaunchScreen.storyboard in Resources */,
 				012C306F226FD13B00BADEF9 /* Assets.xcassets in Resources */,
+				F59C87D9279561B70075B1A2 /* README.md in Resources */,
 				012C306D226FD13B00BADEF9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
